@@ -1,0 +1,26 @@
+{
+  "name": "@ddai1/pi-macos-scheduler",
+  "version": "0.1.0",
+  "description": "A Pi extension for scheduling shell commands and Pi prompts with macOS launchd.",
+  "type": "module",
+  "license": "MIT",
+  "author": "David Dai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddai1/pi-macos-scheduler.git"
+  },
+  "homepage": "https://github.com/ddai1/pi-macos-scheduler#readme",
+  "keywords": ["pi-package", "pi-extension", "macos", "launchd", "scheduler"],
+  "files": ["extensions/", "LICENSE", "README.md"],
+  "pi": {
+    "extensions": ["./extensions/macos-scheduler/index.ts"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
