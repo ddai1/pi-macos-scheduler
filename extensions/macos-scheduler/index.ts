@@ -3,6 +3,7 @@ import { promisify } from "node:util";
 import { homedir } from "node:os";
 import { mkdir, readdir, readFile, stat, writeFile, chmod } from "node:fs/promises";
 import { join } from "node:path";
+import { idFromText, plistEscape, scriptQuote } from "./helpers.mjs";
 import { Type } from "@earendil-works/pi-ai";
 import { defineTool, type ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Key, matchesKey, truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
@@ -12,19 +13,6 @@ const home = homedir();
 const agentsDir = join(home, "Library", "LaunchAgents");
 const scriptsDir = join(home, ".pi", "scheduled-tasks");
 const labelPrefix = "com.pi.schedule.";
-
-function idFromText(text: string): string {
-  const clean = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 32);
-  return clean || "task";
-}
-
-function plistEscape(value: string): string {
-  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
-
-function scriptQuote(value: string): string {
-  return `'${value.replace(/'/g, "'\\''")}'`;
-}
 
 const scheduleTask = defineTool({
   name: "schedule_task",

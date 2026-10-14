@@ -12,6 +12,9 @@
   "homepage": "https://github.com/ddai1/pi-macos-scheduler#readme",
   "keywords": ["pi-package", "pi-extension", "macos", "launchd", "scheduler"],
   "files": ["extensions/", "LICENSE", "README.md"],
+  "scripts": {
+    "test": "node --test"
+  },
   "pi": {
     "extensions": ["./extensions/macos-scheduler/index.ts"]
   },
